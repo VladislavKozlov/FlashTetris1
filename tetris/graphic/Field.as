@@ -7,7 +7,6 @@ package  tetris.graphic
 	import flash.display.DisplayObjectContainer;
 	import tetris.Assets;
 	
-	
 	/**
 	 * ...
 	 * @author Vladislav Kozlov <k2v.akosa@gmail.com>
@@ -18,10 +17,8 @@ package  tetris.graphic
 		private var _heightField:int; 
 		private var _fieldVector:Vector.<Vector.<int>>;
 		private var _fieldBlocks:Array;
-		
 		private var _fieldLengthBlocks:int;
-		private var _size:int;
-		
+		private var _size:int;	
 		private var _blockCubeBD:BitmapData;
 		private var _blockPalkaBD:BitmapData;
 		private var _blockZleftBD:BitmapData;
@@ -30,10 +27,7 @@ package  tetris.graphic
 		private var _blockLBD:BitmapData;
 		private var _blockGBD:BitmapData;
 		private var _indeksRect:int;
-		
 		private var _tetrisCont:DisplayObjectContainer;
-		
-		
 		
 		public function Field(gameContainer:DisplayObjectContainer, height:int, width:int, size:int) 
 		{
@@ -41,43 +35,34 @@ package  tetris.graphic
 			_heightField = height;
 			_widthField = width;
 			_size = size;
-			
 			_fieldBlocks = [];
 			
 			var blockCub:Bitmap = new Bitmap();
 			blockCub = Assets.shape1;
-			_blockCubeBD = blockCub.bitmapData;
-			
+			_blockCubeBD = blockCub.bitmapData;			
 			var blockPalka:Bitmap = new Bitmap();
 			blockPalka = Assets.shape7;
-			_blockPalkaBD = blockPalka.bitmapData;
-			
+			_blockPalkaBD = blockPalka.bitmapData;			
 			var blockZleft:Bitmap = new Bitmap();
 			blockZleft = Assets.shape3;
-			_blockZleftBD = blockZleft.bitmapData;
-			
+			_blockZleftBD = blockZleft.bitmapData;			
 			var blockZright:Bitmap = new Bitmap();
 			blockZright = Assets.shape4;
-			_blockZrightBD = blockZright.bitmapData;
-			
+			_blockZrightBD = blockZright.bitmapData;			
 			var blockT:Bitmap = new Bitmap();
 			blockT = Assets.shape2;
-			_blockTBD = blockT.bitmapData;
-			
+			_blockTBD = blockT.bitmapData;			
 			var blockL:Bitmap = new Bitmap();
 			blockL = Assets.shape6;
-			_blockLBD = blockL.bitmapData;
-			
+			_blockLBD = blockL.bitmapData;			
 			var blockG:Bitmap = new Bitmap();
 			blockG = Assets.shape5;
-			_blockGBD = blockG.bitmapData;
-		
+			_blockGBD = blockG.bitmapData;		
 		}
 		
 		public function createField(fieldVector:Vector.<Vector.<int>>):void
 		{
-			_fieldVector = fieldVector;
-			
+			_fieldVector = fieldVector;			
 			_indeksRect = 0;
 			var block:Array = [];
 			
@@ -152,14 +137,12 @@ package  tetris.graphic
 			for (var l:int = 0; l < _fieldBlocks.length; l++)
 			{
 				_tetrisCont.addChild(_fieldBlocks[l]);
-			}
-			
+			}			
 		}
 	
 		public function removeField():void
 		{
-			_fieldVector = null;
-			
+			_fieldVector = null;			
 			_fieldLengthBlocks = _fieldBlocks.length;
 			if (_fieldLengthBlocks)
 			{

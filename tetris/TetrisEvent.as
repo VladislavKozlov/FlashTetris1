@@ -19,10 +19,8 @@ package tetris
 		public static const FIGURE_REFLECT_IN_FIELD     :String = "FIGURE_REFLECT_IN_FIELD";
 		public static const REMOVE_FILLED_LINES         :String = "REMOVE_FILLED_LINES";
 		
-		
 		private static var _dispatcher:EventDispatcher;
-		
-		
+			
 		public static function get dispatcher():EventDispatcher
 		{
 			if (_dispatcher == null)

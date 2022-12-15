@@ -13,11 +13,8 @@ package  tetris.logic
 	 * @author Vladislav Kozlov <k2v.akosa@gmail.com>
 	 */
 	public class GameLogic 
-	{
-		
+	{		
 		private static const FIGURES:Array = createFigures();
-		
-	
 		private var _width:int; 
 		private var _height:int; 
 		private var _field:Vector.<Vector.<int>>;
@@ -33,56 +30,48 @@ package  tetris.logic
 		private var _figureGraphic:Figure;
 		private var _figureGraphicNew:Figure;
 		private var _fieldGraphic:Field;
-		
-		
+			
 		private static function createFigures():Array
 		{
 			var array:Array = [];
-			var type:int = -1;
-			
-			//cube
+			var type:int = -1;			
+
 			array[++type] = [];
 			array[type][0] = Vector.<int>([1, 1, 1, 2, 2, 1, 2, 2]);
 			array[type][1] = array[type][0];
 			array[type][2] = array[type][0];
 			array[type][3] = array[type][0];
 			
-			//palka
 			array[++type] = [];
 			array[type][0] = Vector.<int>([0, 1, 1, 1, 2, 1, 3, 1]);
 			array[type][1] = Vector.<int>([1, 0, 1, 1, 1, 2, 1, 3]);
 			array[type][2] = array[type][0];
 			array[type][3] = array[type][1];
 			
-			//z left
 			array[++type] = [];
 			array[type][0] = Vector.<int>([0, 1, 1, 1, 1, 2, 2, 2]);
 			array[type][1] = Vector.<int>([0, 2, 0, 1, 1, 1, 1, 0]);
 			array[type][2] = array[type][0];
 			array[type][3] = array[type][1];
 			
-			//z right
 			array[++type] = [];
 			array[type][0] = Vector.<int>([0, 2, 1, 2, 1, 1, 2, 1]); 
 			array[type][1] = Vector.<int>([0, 0, 0, 1, 1, 1, 1, 2]);
 			array[type][2] = array[type][0];
 			array[type][3] = array[type][1];
 			
-			//T
 			array[++type] = [];
 			array[type][0] = Vector.<int>([1, 1, 0, 1, 1, 0, 2, 1]);
 			array[type][1] = Vector.<int>([1, 1, 0, 1, 1, 0, 1, 2]); 
 			array[type][2] = Vector.<int>([1, 1, 0, 1, 2, 1, 1, 2]);
 			array[type][3] = Vector.<int>([1, 1, 1, 0, 2, 1, 1, 2]);
 			
-			//L
 			array[++type] = [];
 			array[type][0] = Vector.<int>([1, 1, 1, 0, 1, 2, 2, 2]);
 			array[type][1] = Vector.<int>([1, 1, 0, 1, 2, 1, 2, 0]); 
 			array[type][2] = Vector.<int>([1, 1, 0, 0, 1, 0, 1, 2]);
 			array[type][3] = Vector.<int>([1, 1, 0, 2, 0, 1, 2, 1]);
 			
-			//Г
 			array[++type] = [];
 			array[type][0] = Vector.<int>([1, 1, 2, 0, 1, 0, 1, 2]); 
 			array[type][1] = Vector.<int>([1, 1, 0, 0, 0, 1, 2, 1]);
@@ -98,9 +87,9 @@ package  tetris.logic
 			_height = height;
 			_tetrisCont = tetrisContainer;
 			_size = size;
-			_blocksLength = blocksLength;
-			
+			_blocksLength = blocksLength;			
 			_field = new Vector.<Vector.<int>>(_height, true);
+			
 			for (var y:int = 0; y < _height; y++ ) 
 			{
 				_field[y] = new Vector.<int>(_width, true);
@@ -122,8 +111,12 @@ package  tetris.logic
 		private function clearField():void
 		{
 			for (var y:int = 0; y < _height; y++ )
+			{
 				for (var x:int = 0; x < _width; x++ )
+				{
 					_field[y][x] = 0;
+				}
+			}
 		}
 		
 		private function reinitNext():void
@@ -157,11 +150,9 @@ package  tetris.logic
 		
 		public function newFigure():Boolean
 		{
-			if (cantAddNewFigure()) return false;
-			
+			if (cantAddNewFigure()) return false;			
 			reinitCurrent();
-			reinitNext();
-			
+			reinitNext();			
 			return true;
 		}
 		
@@ -179,8 +170,7 @@ package  tetris.logic
 					_x += dx;
 					TetrisEvent.dispatch(TetrisEvent.FIGURE_ROTATE, this);
 					return true;
-				}
-				
+				}				
 				crossing = checkCrossing(_type, angle, _x - dx, _y);
 				if (crossing < 0) return false;
 				if (crossing == 0) {
@@ -188,8 +178,7 @@ package  tetris.logic
 					_x -= dx;
 					TetrisEvent.dispatch(TetrisEvent.FIGURE_ROTATE, this);
 					return true;
-				}
-				
+				}				
 				dx++;
 			}
 			return false;
@@ -265,15 +254,21 @@ package  tetris.logic
 			{
 				line = _field[y]; 
 				filled = 0;
-				for (x = 0; x < _width; x++ ) 
-					if (line[x])
-						filled++;
+				for (x = 0; x < _width; x++ )
+				{
+					if (line[x]) filled++;
+				}
 				
 				if (filled == _width) 
 				{
-					for (x = 0; x < _width; x++ ) line[x] = 0; 
-					for (x = y; x >= 1; x-- ) _field[x] = _field[x - 1]; 
-					
+					for (x = 0; x < _width; x++ ) 
+					{
+						line[x] = 0; 
+					}
+					for (x = y; x >= 1; x-- ) 
+					{
+						_field[x] = _field[x - 1]; 
+					}					
 					_field[0] = line; 
 					count++;
 				}
@@ -293,17 +288,13 @@ package  tetris.logic
 		{
 			_fieldGraphic.removeField();
 			_figureGraphic.removeFigure();
-			_figureGraphicNew.removeFigure();
-			
+			_figureGraphicNew.removeFigure();			
 			_fieldGraphic.createField(_field);
 			
 			var figure:Vector.<int> = FIGURES[_type][_angle];
-			_figureGraphic.createFigure(figure, _type, _x, _y);
-			
+			_figureGraphic.createFigure(figure, _type, _x, _y);			
 			figure = FIGURES[_typeNext][_angleNext];
-			_figureGraphicNew.createFigure(figure, _typeNext);
-			
-		}
-		
+			_figureGraphicNew.createFigure(figure, _typeNext);			
+		}		
 	}
 }

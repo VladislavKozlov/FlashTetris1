@@ -23,8 +23,7 @@ package tetris
 		
 		[Embed(source="../res/sound/soundButtonDown.mp3")]
 		private static var SoundButtonDown:Class;
-		
-		
+			
 		[Embed(source = "../res/drawable/menuBackground.png")] 
 		private static var BackgroundBitmap:Class;
 		
@@ -79,31 +78,30 @@ package tetris
 		[Embed(source = "../res/drawable/backgroundButton.png")] 
 		private static var BackgroundButton:Class;
 		
-		
-		
-		
 		public static function get soundRotate():Class 
 		{
 			return SoundRotate;
 		}
+		
 		public static function get soundReflect():Class 
 		{
 			return SoundReflect;
 		}
+		
 		public static function get soundRemove():Class 
 		{
 			return SoundRemove;
 		}
+		
 		public static function get soundGameOver():Class 
 		{
 			return SoundGameOver;
 		}
+		
 		public static function get soundButtonDown():Class 
 		{
 			return SoundButtonDown;
 		}
-		
-		
 		
 		public static function get backgroundBitmap():Bitmap 
 		{

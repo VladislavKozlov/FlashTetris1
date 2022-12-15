@@ -9,8 +9,7 @@ package tetris.ui
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
 	import tetris.visual.UIButton;
-	import tetris.Assets;
-	
+	import tetris.Assets;	
 	
 	/**
 	 *

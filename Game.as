@@ -10,7 +10,6 @@ package
 	import flash.ui.Keyboard;
 	import flash.utils.Timer;
 	import sound.Sfx;
-	
 	import tetris.logic.GameLogic;
 	import tetris.Assets;
 	import tetris.ui.MainMenu;
@@ -19,8 +18,7 @@ package
 	import tetris.ui.PauseScreen;
 	import tetris.ui.WindowManager;
 	import tetris.ui.GameScreenStatic;
-	import tetris.TetrisEvent;
-	
+	import tetris.TetrisEvent;	
 	
 	/**
 	 * ...
@@ -28,10 +26,8 @@ package
 	 */
 	public class Game extends Sprite   
 	{
-		private static const SCORE_MULT:Vector.<int> = Vector.<int>([10, 100, 220, 380, 500]);
-		
+		private static const SCORE_MULT:Vector.<int> = Vector.<int>([10, 100, 220, 380, 500]);	
 		private static const SPEED_START:int = 900;
-		
 		private static const SPEED_MULT:Number = 0.8;
 		
 		private var _tetris:GameLogic;
@@ -55,8 +51,7 @@ package
 		private var _gameOverScreen:GameOverScreen;
 		private var _pauseScreen:PauseScreen;
 		private var _gameScreenStatic:GameScreenStatic;
-		
-		
+				
 		public function Game() 
 		{
 			if (stage) init();
@@ -110,8 +105,7 @@ package
 				removeChild(_gameScreenStatic);
 			}
 			
-			_gameScreen = new GameScreen();
-			
+			_gameScreen = new GameScreen();			
 			_tetris = new GameLogic(10, 20, 20, 4, _gameScreen.tetrisContainer);
 			_timer = new Timer(SPEED_START);
 			addChild(_gameScreen);

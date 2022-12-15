@@ -11,8 +11,7 @@ package tetris.ui
 	import flash.text.TextFormatAlign;
 	import tetris.visual.UIButton;
 	import tetris.Assets;
-	
-	
+		
 	/**
 	 * ...
 	 * @author Vladislav Kozlov <k2v.akosa@gmail.com>
@@ -21,17 +20,14 @@ package tetris.ui
 	{
 		private var _gameScreenDynamicContainer:DisplayObjectContainer;
 		private var _background:Bitmap;
-		private var _gameLogo:Bitmap;
-		
+		private var _gameLogo:Bitmap;		
 		public var tetrisContainer:DisplayObjectContainer;
 		public var buttonPlay:UIButton;
 		public var buttonQuit:UIButton;
-		public var buttonPause:UIButton;
-		
+		public var buttonPause:UIButton;		
 		public var scoreTextField:TextField;
 		public var linesTextField:TextField;
-		public var levelTextField:TextField;
-		
+		public var levelTextField:TextField;		
 		
 		public function GameScreen()
 		{
@@ -64,7 +60,6 @@ package tetris.ui
 			
 			tetrisContainer.x = (_gameScreenDynamicContainer.width - tetrisContainer.width) / 2;
 			tetrisContainer.y = (_gameScreenDynamicContainer.height - tetrisContainer.height) / 2;
-			
 			
 			levelTextField = createTextField(tetrisContainer.x + 220, tetrisContainer.y + 120, TextFieldAutoSize.LEFT, TextFormatAlign.LEFT);
 			linesTextField = createTextField(tetrisContainer.x + 220, tetrisContainer.y + 150, TextFieldAutoSize.LEFT, TextFormatAlign.LEFT);

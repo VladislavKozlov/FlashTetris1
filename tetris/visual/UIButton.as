@@ -9,7 +9,6 @@ package tetris.visual
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
-	
 	import tetris.Assets;
 	
 	/**
@@ -21,15 +20,15 @@ package tetris.visual
 		public var text:String;
 		private var _buttonImage:Bitmap;
 		
-		public function UIButton(text:String = null, button:Bitmap = null) {
-			
+		public function UIButton(text:String = null, button:Bitmap = null) 
+		{			
 			this.text = text;
 			_buttonImage = button;
 			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 		}
 		
-		private function onAddedToStage(e:Event):void {
-			
+		private function onAddedToStage(e:Event):void 
+		{			
 			removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			
 			if (!_buttonImage)
@@ -43,8 +42,7 @@ package tetris.visual
 			{
 				_buttonImage.smoothing = true;
 				addChild(_buttonImage);
-			}
-			
+			}			
 			if (text)
 			{
 				var textField:TextField = generateTextField(30, text); 
@@ -52,6 +50,7 @@ package tetris.visual
 				textField.y = (_buttonImage.height - textField.height) / 2;
 				addChild(textField);
 			}
+			
 			this.addEventListener(MouseEvent.MOUSE_OVER, touchBegin); 
 		}
 		
@@ -71,12 +70,14 @@ package tetris.visual
 			return textField;
 		}
 		
-		private function touchBegin(e:MouseEvent):void {
+		private function touchBegin(e:MouseEvent):void 
+		{
 			TweenLite.to(_buttonImage, 0.3, { alpha:0.1 } );
 			stage.addEventListener(MouseEvent.MOUSE_OVER, touchEnd);
 		}
 		
-		private function touchEnd(e:MouseEvent):void {
+		private function touchEnd(e:MouseEvent):void 
+		{
 			TweenLite.to(_buttonImage, 0.3, { alpha:1 } );
 			stage.removeEventListener(MouseEvent.MOUSE_OVER, touchEnd);
 		}

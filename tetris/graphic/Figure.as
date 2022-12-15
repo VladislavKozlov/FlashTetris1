@@ -29,7 +29,6 @@ package  tetris.graphic
 		private var _blockT:Array = [];
 		private var _blockL:Array = [];
 		private var _blockG:Array = [];
-		
 		private var _blockCubeBD:BitmapData;
 		private var _blockPalkaBD:BitmapData;
 		private var _blockZleftBD:BitmapData;
@@ -37,13 +36,9 @@ package  tetris.graphic
 		private var _blockTBD:BitmapData;
 		private var _blockLBD:BitmapData;
 		private var _blockGBD:BitmapData;
-		
 		private var _blocksLength:int;
 		private var _figureBlockInit:Boolean = false;
 		private var _tetrisCont:DisplayObjectContainer;
-		
-		
-		
 		
 		public function Figure(gameContainer:DisplayObjectContainer, size:int, blocksLength:int, width:int)
 		{
@@ -61,38 +56,31 @@ package  tetris.graphic
 				}
 			};
 			
-			_figureBlocks = [];
-			
+			_figureBlocks = [];			
 			var blockCub:Bitmap = new Bitmap();
 			blockCub = Assets.shape1;
 			_blockCubeBD = blockCub.bitmapData;
-			blocksArrayInit(_blockCub, _blockCubeBD);
-			
+			blocksArrayInit(_blockCub, _blockCubeBD);			
 			var blockPalka:Bitmap = new Bitmap();
 			blockPalka = Assets.shape7;
 			_blockPalkaBD = blockPalka.bitmapData;
-			blocksArrayInit(_blockPalka, _blockPalkaBD);
-			
+			blocksArrayInit(_blockPalka, _blockPalkaBD);			
 			var blockZleft:Bitmap = new Bitmap();
 			blockZleft = Assets.shape3;
 			_blockZleftBD = blockZleft.bitmapData;
-			blocksArrayInit(_blockZleft, _blockZleftBD);
-			
+			blocksArrayInit(_blockZleft, _blockZleftBD);			
 			var blockZright:Bitmap = new Bitmap();
 			blockZright = Assets.shape4;
 			_blockZrightBD = blockZright.bitmapData;
-			blocksArrayInit(_blockZright, _blockZrightBD);
-			
+			blocksArrayInit(_blockZright, _blockZrightBD);			
 			var blockT:Bitmap = new Bitmap();
 			blockT = Assets.shape2;
 			_blockTBD = blockT.bitmapData;
-			blocksArrayInit(_blockT, _blockTBD);
-			
+			blocksArrayInit(_blockT, _blockTBD);			
 			var blockL:Bitmap = new Bitmap();
 			blockL = Assets.shape6;
 			_blockLBD = blockL.bitmapData;
-			blocksArrayInit(_blockL, _blockLBD);
-			
+			blocksArrayInit(_blockL, _blockLBD);			
 			var blockG:Bitmap = new Bitmap();
 			blockG = Assets.shape5;
 			_blockGBD = blockG.bitmapData;
@@ -104,13 +92,10 @@ package  tetris.graphic
 			var xf:int;
 			var yf:int;
 			_x = x;
-			_y = y;
-			
+			_y = y;			
 			_figureVector = figureVector;
-			_figureType = figureType;
-			
-			figureArrayInit(_figureType, _figureBlocks);
-			
+			_figureType = figureType;			
+			figureArrayInit(_figureType, _figureBlocks);			
 			_figureCoordinates = [];
 			
 			if (_x ==0 && _y == 0)//if nextFigure
@@ -134,23 +119,20 @@ package  tetris.graphic
 					_figureCoordinates[j] = xf * _size;
 					_figureCoordinates[j + 1] = yf * _size;
 				}
-			}
-			
+			}			
 			figureDraw(_figureCoordinates, _figureBlocks, _figureVector);
 			
 			for (var l:int = 0; l < _blocksLength; l++)
 			{
 				_tetrisCont.addChild(_figureBlocks[l]);
 			}
-			_figureBlockInit = true;
-			
+			_figureBlockInit = true;			
 		}
 	
 		public function removeFigure():void
 		{
 			_figureVector = null;
-			_figureType = 0;
-			
+			_figureType = 0;			
 			if (_figureBlockInit)
 			{
 				for (var r:int = 0; r < _blocksLength; r++)

@@ -15,17 +15,14 @@ package tetris.ui
 		
 		public function initWithData(args:*):void 
 		{
-			
 		}
 		
 		public function show():void
-		{
-			
+		{			
 		}
 		
 		public function layout(w:Number, h:Number):void
-		{
-			
+		{			
 		}
 	}
 }
